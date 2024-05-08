@@ -137,7 +137,7 @@ $(document).ready(function () {
   ScrollTrigger.create({
     trigger: "#header-animation",
     start: `top top-=-0`,
-    end: `top top-=${widnowWidth > 768 ? "41%" : "46%"}`,
+    end: `top top-=${widnowWidth > 768 ? "41%" : "47%"}`,
     pin: true,
     onUpdate: function (e) {
       const percent = e.progress * 100;

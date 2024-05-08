@@ -11,6 +11,7 @@
   @include align-center;
   @include justify-center;
   overflow-y: auto;
+
   @media (max-width: 1300px) {
     min-height: calc(100vh - 75px);
   }
@@ -27,6 +28,12 @@
     top: 0;
     left: 0;
   }
+  &.fixed {
+    &:after {
+      content: "";
+      background-attachment: fixed;
+    }
+  }
   .banner-info {
     @include flex;
     @include dir-col;
@@ -41,17 +48,17 @@
       max-width: 100%;
       max-height: 100%;
     }
+    #header-animation {
+      @include flex;
+      @include align-center;
+      @include dir-col;
+    }
     .banner-logo {
       @media (max-width: 1500px) {
         max-width: 100px;
       }
       @media (max-width: 767px) {
         max-width: 70px;
-      }
-      &:hover {
-        img {
-          transform: scale(1.02);
-        }
       }
     }
     .logo-white {
@@ -63,11 +70,6 @@
       @media (max-width: 767px) {
         max-width: 180px;
         margin: 20px auto;
-      }
-      &:hover {
-        img {
-          transform: scale(1.02);
-        }
       }
     }
     .banner-buttons {
@@ -508,9 +510,13 @@
 }
 
 .about {
-  margin: 50px 0;
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 50px 0;
   @media (max-width: 767px) {
-    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 30px;
   }
   .wrapper {
     @include flex;
@@ -519,11 +525,18 @@
       text-align: center;
       align-self: center;
       margin-bottom: 35px;
-      max-width: 100%;
-      max-height: 100%;
+      width: 486px;
+      opacity: 0;
+      transition: 0.3s;
+      @media (max-width: 1500px) {
+        width: 440px;
+      }
       @media (max-width: 767px) {
         margin-bottom: 20px;
-        width: 230px;
+        width: 180px;
+      }
+      &.opacity {
+        opacity: 1;
       }
     }
     .about-subtitle {

@@ -88,24 +88,7 @@ $(document).ready(function () {
       },
     ],
   });
-  // $(".popup-gallery").magnificPopup({
-  //   delegate: "a",
-  //   type: "image",
-  //   tLoading: "Loading image #%curr%...",
-  //   mainClass: "mfp-img-mobile",
-  //   gallery: {
-  //     enabled: true,
-  //     navigateByImgClick: true,
-  //   },
-  //   callbacks: {
-  //     open: function () {
-  //       $("html").css("overflow", "hidden");
-  //     },
-  //     close: function () {
-  //       $("html").css("overflow", "auto");
-  //     },
-  //   },
-  // });
+
   $(window).scroll(function () {
     var sticky = $(".top-scroll"),
       scroll = $(window).scrollTop();
@@ -142,4 +125,28 @@ $(document).ready(function () {
   });
 
   AOS.init();
+
+  let widnowWidth = $(window).width();
+
+  $(window)
+    .on("resize", function () {
+      widnowWidth = $(window).width();
+    })
+    .resize();
+
+  ScrollTrigger.create({
+    trigger: "#header-animation",
+    start: `top top-=-0`,
+    end: `top top-=${widnowWidth > 768 ? "41%" : "46%"}`,
+    pin: true,
+    markers: true,
+    onUpdate: function (e) {
+      const percent = e.progress * 100;
+      if (percent > 99) {
+        $("#black-logo").css("opacity", 1);
+      } else {
+        $("#black-logo").css("opacity", 0);
+      }
+    },
+  });
 });

@@ -24,6 +24,8 @@ $(document).ready(function () {
         settings: {
           slidesToShow: 1,
           variableWidth: true,
+          autoplay: true,
+          autoplaySpeed: 2000,
           dots: true,
         },
       },
@@ -104,15 +106,15 @@ $(document).ready(function () {
   //     },
   //   },
   // });
-  // $(window).scroll(function () {
-  //   var sticky = $(".top-scroll"),
-  //     scroll = $(window).scrollTop();
-  //   if (scroll >= 200) sticky.addClass("show");
-  //   else sticky.removeClass("show");
-  // });
-  // $(".top-scroll").smoothScroll({
-  //   speed: 1000,
-  // });
+  $(window).scroll(function () {
+    var sticky = $(".top-scroll"),
+      scroll = $(window).scrollTop();
+    if (scroll >= 200) sticky.addClass("show");
+    else sticky.removeClass("show");
+  });
+  $(".top-scroll").smoothScroll({
+    speed: 1000,
+  });
   $(".phone-number-input").inputmask({
     mask: "+7 (999) 999 - 99 - 99",
   });
@@ -138,4 +140,6 @@ $(document).ready(function () {
     type: "inline",
     mainClass: "mfp-fade",
   });
+
+  AOS.init();
 });

@@ -139,7 +139,6 @@ $(document).ready(function () {
     start: `top top-=-0`,
     end: `top top-=${widnowWidth > 768 ? "41%" : "46%"}`,
     pin: true,
-    markers: true,
     onUpdate: function (e) {
       const percent = e.progress * 100;
       if (percent > 99) {
